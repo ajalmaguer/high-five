@@ -7,7 +7,13 @@
     <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
   </head>
   <body>
-    <img id="hand" src="hand.png" alt="" />
+    <!-- <img id="hand" src="hand.png" alt="" /> -->
+    <script type="text/javascript">
+      $(window).on('click', function (e){
+        console.log(e.clientX, e.pageX)
+        
+      })
+    </script>
 
   </body>
 </html>
