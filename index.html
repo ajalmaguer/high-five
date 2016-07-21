@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Slap It!</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" media="screen" title="no title" charset="utf-8">
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
+
+    <style media="screen">
+      .hand {
+        position: absolute;
+      }
+    </style>
+  </head>
+  <body>
+    <br>
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-11">
+          <input type="text" class="form-control" placeholder="paste an image url here.">
+        </div>
+        <div class="col-xs-1">
+          <button id="go" class="btn">Go</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="class">
+
+      </div>
+    </div>
+
+    <script type="text/javascript">
+      if (getParameterByName('imageUrl')) {
+        // place imageUrl
+
+        // setup click event
+        // setupClickHandler()
+
+      }
+
+      $("button").click(function (e) {
+        var url = $('input').val()
+        var imageUrl = {"imageUrl": url}
+        window.history.pushState(null, null, "?" + $.param(imageUrl))
+      })
+
+      function getParameterByName(name, url) {
+        if (!url) url = window.location.href;
+        name = name.replace(/[\[\]]/g, "\\$&");
+        var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+            results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return '';
+        return decodeURIComponent(results[2].replace(/\+/g, " "));
+      }
+
+      function setupClickHandler() {
+        $(window).on('click', function (e){
+          var hand = $('<div class="hand"><img src="hand.png" alt="" /></div>')
+
+          hand.clone()
+              .css({left:e.pageX - 80, top: e.pageY - 80})
+              .appendTo('body')
+              .fadeOut()
+
+          var sound = new Audio('slap.m4a')
+          sound.play()
+
+        })
+      }
+
+    </script>
+
+  </body>
+</html>
