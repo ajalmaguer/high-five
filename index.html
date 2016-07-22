@@ -10,7 +10,7 @@
 
     <style media="screen">
       .fullscreen {
-        height: 100vh;
+        /*height: 100vh;*/
       }
 
       .hand {
@@ -24,13 +24,21 @@
   </head>
   <body>
     <br>
-    <div class="container">
+
+    <div class="fullscreen container">
+
+      <div class="img-container text-center">
+      </div>
+    </div>
+
+    <br>
+    <div class="container text-center">
         Wanna slap someone else?
       <div class="row">
         <div class="col-xs-12 col-sm-4">
           <h4>1. Paste image url below and press go.</h4>
         </div>
-        <div class="col-xs-12 col-sm-2">
+        <div class="col-xs-12 col-sm-4">
           <h4>2. Slap away.</h4>
         </div>
         <div class="col-xs-12 col-sm-4">
@@ -49,12 +57,9 @@
     <br>
     <br>
     <br>
+    <br>
+    <br>
 
-    <div class="fullscreen container">
-
-      <div class="img-container text-center">
-      </div>
-    </div>
 
     <script type="text/javascript">
       if (getParameterByName('imageUrl')) {
