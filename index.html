@@ -88,7 +88,7 @@
 
       function placeImage() {
         var url = getParameterByName("imageUrl")
-        $(".img-container").append($("<img src='" + url + "' />"))
+        $(".img-container").html("").append($("<img src='" + url + "' />"))
       }
 
       function setupClickHandler() {
