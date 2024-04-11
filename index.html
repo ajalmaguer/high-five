@@ -1,12 +1,25 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
 
-    <title>Slap It!</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" media="screen" title="no title" charset="utf-8">
-    <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
+    <title>Virtual High Five!</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+      media="screen"
+      title="no title"
+      charset="utf-8"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.1.0.min.js"
+      integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="
+      crossorigin="anonymous"
+    ></script>
 
     <style media="screen">
       .fullscreen {
@@ -17,29 +30,27 @@
         position: absolute;
       }
 
-      .img-container img{
+      .img-container img {
         max-width: 100%;
       }
     </style>
   </head>
   <body>
-    <br>
+    <br />
 
     <div class="fullscreen container">
-
-      <div class="img-container text-center">
-      </div>
+      <div class="img-container text-center"></div>
     </div>
 
-    <br>
+    <br />
     <div class="container text-center">
-        Wanna slap someone else?
+      Wanna high five someone else?
       <div class="row">
         <div class="col-xs-12 col-sm-4">
           <h4>1. Paste image url below and press go.</h4>
         </div>
         <div class="col-xs-12 col-sm-4">
-          <h4>2. Slap away.</h4>
+          <h4>2. High five away.</h4>
         </div>
         <div class="col-xs-12 col-sm-4">
           <h4>3. Share URL.</h4>
@@ -47,73 +58,76 @@
       </div>
       <div class="row">
         <div class="col-xs-10">
-          <input type="text" class="form-control" placeholder="paste an image url here.">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="paste an image url here."
+          />
         </div>
         <div class="col-xs-2">
           <button id="go" class="btn btn-success">Go</button>
         </div>
       </div>
     </div>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
 
     <script type="text/javascript">
       if (getParameterByName('imageUrl')) {
         // place imageUrl
-        placeImage()
+        placeImage();
 
         // setup click event
-        setupClickHandler()
+        setupClickHandler();
       }
 
-      $("button").click(function (e) {
-        var url = $('input').val()
-        $('input').val("")
-        var imageUrl = {"imageUrl": url}
-        if(url) {
-          window.history.pushState(null, null, "?" + $.param(imageUrl))
+      $('button').click(function (e) {
+        var url = $('input').val();
+        $('input').val('');
+        var imageUrl = { imageUrl: url };
+        if (url) {
+          window.history.pushState(null, null, '?' + $.param(imageUrl));
           // place imageUrl
-          placeImage()
+          placeImage();
           // setup click event
-          setupClickHandler()
+          setupClickHandler();
         }
-      })
+      });
 
       function getParameterByName(name, url) {
         if (!url) url = window.location.href;
-        name = name.replace(/[\[\]]/g, "\\$&");
-        var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
-            results = regex.exec(url);
+        name = name.replace(/[\[\]]/g, '\\$&');
+        var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+          results = regex.exec(url);
         if (!results) return null;
         if (!results[2]) return '';
-        return decodeURIComponent(results[2].replace(/\+/g, " "));
+        return decodeURIComponent(results[2].replace(/\+/g, ' '));
       }
 
       function placeImage() {
-        var url = getParameterByName("imageUrl")
-        $(".img-container").html("").append($("<img src='" + url + "' />"))
+        var url = getParameterByName('imageUrl');
+        $('.img-container')
+          .html('')
+          .append($("<img src='" + url + "' />"));
       }
 
       function setupClickHandler() {
-        $(".fullscreen").on('click', function (e){
-          var hand = $('<div class="hand"><img src="hand.png" alt="" /></div>')
+        $('.fullscreen').on('click', function (e) {
+          var hand = $('<div class="hand"><img src="hand.png" alt="" /></div>');
 
-          hand.clone()
-              .css({left:e.pageX - 80, top: e.pageY - 80})
-              .appendTo('body')
-              .fadeOut()
+          hand
+            .clone()
+            .css({ left: e.pageX - 80, top: e.pageY - 80 })
+            .appendTo('body')
+            .fadeOut();
 
-          var sound = new Audio('slap.m4a')
-          sound.play()
-
-        })
+          var sound = new Audio('slap.m4a');
+          sound.play();
+        });
       }
-
     </script>
-
   </body>
 </html>
